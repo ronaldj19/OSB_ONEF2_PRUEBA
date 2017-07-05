@@ -1,0 +1,14 @@
+<adapter-config name="SP_LIST_CUSTOMERS" adapter="db" wsdlLocation="../WSDL/SP_LIST_CUSTOMERS.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="Connection1" location="eis/DB/ONEDB"/>
+  <endpoint-interaction portType="SP_LIST_CUSTOMERS_ptt" operation="SP_LIST_CUSTOMERS">
+    <interaction-spec className="oracle.tip.adapter.db.DBStoredProcedureInteractionSpec">
+      <property name="SchemaName" value="RONALD"/>
+      <property name="PackageName" value="PKG_ONEMX_FASE02"/>
+      <property name="ProcedureName" value="SP_LIST_CUSTOMERS"/>
+      <property name="QueryTimeout" value="15"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>
