@@ -1,0 +1,24 @@
+<wsdl:definitions name="SP_LIST_CUSTOMERS" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/ONE_FASE2/DAT_ONE/SP_LIST_CUSTOMERS" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/ONE_FASE2/DAT_ONE/SP_LIST_CUSTOMERS" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/sp/SP_LIST_CUSTOMERS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <plt:partnerLinkType name="SP_LIST_CUSTOMERS_plt">
+    <plt:role name="SP_LIST_CUSTOMERS_role">
+      <plt:portType name="tns:SP_LIST_CUSTOMERS_ptt"/>
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+     <schema xmlns="http://www.w3.org/2001/XMLSchema">
+       <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/sp/SP_LIST_CUSTOMERS" schemaLocation="../XSD/SP_LIST_CUSTOMERS_sp.xsd"/>
+     </schema>
+    </wsdl:types>
+    <wsdl:message name="args_in_msg">
+        <wsdl:part name="InputParameters" element="db:InputParameters"/>
+    </wsdl:message>
+    <wsdl:message name="args_out_msg">
+        <wsdl:part name="OutputParameters" element="db:OutputParameters"/>
+    </wsdl:message>
+    <wsdl:portType name="SP_LIST_CUSTOMERS_ptt">
+        <wsdl:operation name="SP_LIST_CUSTOMERS">
+            <wsdl:input message="tns:args_in_msg"/>
+            <wsdl:output message="tns:args_out_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>
