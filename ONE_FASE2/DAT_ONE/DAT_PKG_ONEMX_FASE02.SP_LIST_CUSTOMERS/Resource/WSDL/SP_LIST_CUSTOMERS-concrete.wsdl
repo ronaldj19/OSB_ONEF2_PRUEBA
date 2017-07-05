@@ -1,0 +1,15 @@
+<wsdl:definitions targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/ONE_FASE2/DAT_ONE/SP_LIST_CUSTOMERS" name="SP_LIST_CUSTOMERS-concrete" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:import location="SP_LIST_CUSTOMERS.wsdl" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/ONE_FASE2/DAT_ONE/SP_LIST_CUSTOMERS"/>
+    <wsdl:binding name="SP_LIST_CUSTOMERS_ptt-binding" type="sp:SP_LIST_CUSTOMERS_ptt" xmlns:sp="http://xmlns.oracle.com/pcbpel/adapter/db/ONE_FASE2/DAT_ONE/SP_LIST_CUSTOMERS">
+        <soap:binding style="document" transport="http://www.bea.com/wli/sb/transports/jca"/>
+        <wsdl:operation name="SP_LIST_CUSTOMERS">
+            <soap:operation soapAction="SP_LIST_CUSTOMERS"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+</wsdl:definitions>
