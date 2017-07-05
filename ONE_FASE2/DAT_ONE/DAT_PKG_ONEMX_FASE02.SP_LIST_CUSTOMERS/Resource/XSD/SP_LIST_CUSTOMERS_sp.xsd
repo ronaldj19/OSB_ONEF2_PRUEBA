@@ -1,0 +1,39 @@
+<schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/sp/SP_LIST_CUSTOMERS" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/sp/SP_LIST_CUSTOMERS" elementFormDefault="qualified">
+   <element name="InputParameters">
+      <complexType>
+         <sequence>
+            <element name="SLL_ID" type="int" db:index="1" db:type="INTEGER" minOccurs="0" nillable="true"/>
+         </sequence>
+      </complexType>
+   </element>
+   <element name="OutputParameters">
+      <complexType>
+         <sequence>
+            <element name="ERR_OUT" type="string" db:index="2" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="MESSAGE_OUT" type="string" db:index="3" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="CURSOR_SERV_LLAN" type="db:CURSOR_SERV_LLAN_RowSet" db:index="4" db:type="RowSet" minOccurs="0" nillable="true"/>
+         </sequence>
+      </complexType>
+   </element>
+   <complexType name="CURSOR_SERV_LLAN_RowSet">
+      <sequence>
+         <element name="CURSOR_SERV_LLAN_Row" minOccurs="0" maxOccurs="unbounded">
+            <complexType>
+               <sequence>
+                  <element name="SLL_ID" type="db:string20" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+                  <element name="SLL_ESTADO" type="db:string20" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+                  <element name="SLL_FECHA_INI" type="db:string20" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+                  <element name="SLL_FECHA_FIN" type="db:string20" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+                  <element name="SLL_FECHA_NACIMIENTO" type="db:string20" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+                  <element name="SLL_CATEGORIA" type="db:string20" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+               </sequence>
+            </complexType>
+         </element>
+      </sequence>
+   </complexType>
+   <simpleType name="string20">
+      <restriction base="string">
+         <maxLength value="20"/>
+      </restriction>
+   </simpleType>
+</schema>
