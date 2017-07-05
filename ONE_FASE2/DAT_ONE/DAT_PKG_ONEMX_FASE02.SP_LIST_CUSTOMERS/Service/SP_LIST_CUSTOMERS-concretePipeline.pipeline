@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
+    <con:coreEntry>
+        <con:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType">
+            <con:wsdl ref="DAT_ONE/DAT_PKG_ONEMX_FASE02.SP_LIST_CUSTOMERS/Resource/WSDL/SP_LIST_CUSTOMERS-concrete"/>
+            <con:binding>
+                <con:name>SP_LIST_CUSTOMERS_ptt-binding</con:name>
+                <con:namespace>http://xmlns.oracle.com/pcbpel/adapter/db/ONE_FASE2/DAT_ONE/SP_LIST_CUSTOMERS</con:namespace>
+            </con:binding>
+        </con:binding>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router errorHandler="error-7f000001.72292c89.0.15d0f27bfdf.N7fc3">
+        <con:pipeline type="request" name="request-7f000001.72292c89.0.15d0f27bfdf.N8000">
+            <con:stage id="_StageId-7f000001.72292c89.0.15d0f27bfdf.N7ffe" name="StageInitial">
+                <con:context/>
+                <con:actions>
+                    <con1:assign varName="requestIn">
+                        <con2:id>_ActionId-7f000001.72292c89.0.15d0f27bfdf.N7fbf</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText>$body</con2:xqueryText>
+                        </con1:expr>
+                    </con1:assign>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-7f000001.72292c89.0.15d0f27bfdf.N7fff">
+            <con:stage id="_StageId-7f000001.72292c89.0.15d0f27bfdf.N7ffd" name="StageEnd">
+                <con:context/>
+                <con:actions>
+                    <con1:assign varName="responseOut">
+                        <con2:id>_ActionId-7f000001.72292c89.0.15d0f27bfdf.N7fbc</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText>$body</con2:xqueryText>
+                        </con1:expr>
+                    </con1:assign>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="error" name="error-7f000001.72292c89.0.15d0f27bfdf.N7fc3">
+            <con:stage id="_StageId-7f000001.72292c89.0.15d0f27bfdf.N7fc2" name="StageFault">
+                <con:context/>
+                <con:actions>
+                    <con1:assign varName="error">
+                        <con2:id>_ActionId-7f000001.72292c89.0.15d0f27bfdf.N7fb9</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText>$fault</con2:xqueryText>
+                        </con1:expr>
+                    </con1:assign>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:flow>
+            <con:pipeline-node name="PipelinePairNode1">
+                <con:request>request-7f000001.72292c89.0.15d0f27bfdf.N8000</con:request>
+                <con:response>response-7f000001.72292c89.0.15d0f27bfdf.N7fff</con:response>
+            </con:pipeline-node>
+            <con:route-node name="RouteNode">
+                <con:context/>
+                <con:actions>
+                    <con3:route>
+                        <con2:id>_ActionId-7f000001.72292c89.0.15d0f27bfdf.N7fc4</con2:id>
+                        <con3:service ref="DAT_ONE/DAT_PKG_ONEMX_FASE02.SP_LIST_CUSTOMERS/Service/SP_LIST_CUSTOMERS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con3:operation>SP_LIST_CUSTOMERS</con3:operation>
+                        <con3:outboundTransform/>
+                        <con3:responseTransform/>
+                    </con3:route>
+                </con:actions>
+            </con:route-node>
+        </con:flow>
+    </con:router>
+</con:pipelineEntry>
